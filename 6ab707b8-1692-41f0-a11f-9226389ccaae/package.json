@@ -12,8 +12,8 @@
     "jspdf": "^2.5.1"
   },
   "devDependencies": {
-    "@types/react": "19.0.0",
-    "@types/react-dom": "19.0.0",
+    "@types/react": "^18.2.79",
+"@types/react-dom": "^18.2.25",
     "loader-utils": "3.2.1",
     "typescript": "5.7.2"
   },
