@@ -11,17 +11,16 @@
     "idb-keyval": "^6.2.2",
     "jspdf": "^2.5.1"
   },
-  "devDependencies": {
-    "@types/react": "^18.2.79",
-"@types/react-dom": "^18.2.25",
-    "loader-utils": "3.2.1",
-    "typescript": "5.7.2"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
