@@ -1,6 +1,11 @@
 {
-  "short_name": "Diligências",
   "name": "Diligências App",
+  "short_name": "Diligências",
+  "description": "Aplicativo para registro e organização de diligências policiais.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1635",
+  "theme_color": "#0b1635",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -12,9 +17,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#0b1635",
-  "background_color": "#081124"
+  ]
 }
