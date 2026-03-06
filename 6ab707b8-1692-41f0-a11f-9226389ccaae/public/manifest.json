@@ -8,33 +8,20 @@
   "short_name": "Diligências",
   "start_url": "/",
   "theme_color": "#0b1635",
+
   "icons": [
     {
-      "src": "https://diligencias-app.vercel.app/icon-192.png",
-      "type": "image/png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
-      "isSquare": true,
-      "isPng": true,
-      "isWebp": false,
-      "isJpg": false,
-      "width": 192,
-      "is512x512": false,
-      "is256x256": false,
-      "is192x192": true
+      "type": "image/png"
     },
     {
-      "src": "https://diligencias-app.vercel.app/favicon.ico",
-      "type": "image/x-icon",
-      "isSquare": false,
-      "isPng": false,
-      "isWebp": false,
-      "isJpg": false,
-      "width": 0,
-      "is512x512": false,
-      "is256x256": false,
-      "is192x192": false
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
+
   "id": "diligencias.app",
   "description": "Aplicativo para registro e organização de diligências policiais."
 }
