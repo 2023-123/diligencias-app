@@ -107,7 +107,6 @@ function normalizeImportedDB(obj) {
 
   if (!obj) return { version: 2, caseData: fallback };
 
-  // compatibilidade com versão antiga multi-casos
   if (Array.isArray(obj.cases) && obj.cases.length > 0) {
     const oldActive =
       obj.cases.find((c) => c.id === obj.activeCaseId) || obj.cases[0];
@@ -129,8 +128,12 @@ function normalizeImportedDB(obj) {
       caseData: {
         ...fallback,
         ...obj.caseData,
-        pessoas: Array.isArray(obj.caseData.pessoas) ? obj.caseData.pessoas : [],
-        eventos: Array.isArray(obj.caseData.eventos) ? obj.caseData.eventos : [],
+        pessoas: Array.isArray(obj.caseData.pessoas)
+          ? obj.caseData.pessoas
+          : [],
+        eventos: Array.isArray(obj.caseData.eventos)
+          ? obj.caseData.eventos
+          : [],
       },
     };
   }
@@ -649,13 +652,23 @@ export default function App() {
           <span className="pill">Viatura: {activeCase.viatura || "—"}</span>
         </div>
 
-        <div className="btns">
-          <button className="primary" onClick={() => gerarPDFDoCaso(activeCase)}>
+        <div className="btns" style={{ position: "relative", zIndex: 2 }}>
+          <button
+            type="button"
+            className="primary"
+            onClick={() => gerarPDFDoCaso(activeCase)}
+          >
             Gerar PDF
           </button>
-          <button className="ghost" onClick={exportJSON}>
+
+          <button
+            type="button"
+            className="ghost"
+            onClick={() => exportJSON()}
+          >
             Exportar
           </button>
+
           <label style={{ margin: 0 }}>
             <input
               type="file"
@@ -670,8 +683,24 @@ export default function App() {
               Importar
             </span>
           </label>
-          <button className="ghost" onClick={openProVersion}>
-            Mais recursos na versão Pro
+        </div>
+
+        <div className="proCard" style={{ position: "relative", zIndex: 1 }}>
+          <div className="proTitle">🚀 Versão Pro</div>
+
+          <div className="proFeatures">
+            <div>📡 Funciona totalmente offline</div>
+            <div>📂 Múltiplos casos</div>
+            <div>📍 Coordenadas GPS no relatório</div>
+            <div>🖼️ Imagens nos eventos</div>
+          </div>
+
+          <button
+            type="button"
+            className="proBtn"
+            onClick={() => openProVersion()}
+          >
+            ✨ Mais recursos na versão Pro
           </button>
         </div>
       </div>
@@ -687,11 +716,23 @@ export default function App() {
             />
           </div>
 
-          <div className="btns" style={{ alignItems: "flex-end" }}>
-            <button className="primary" onClick={openNewPerson}>
+          <div
+            className="btns"
+            style={{ alignItems: "flex-end", position: "relative", zIndex: 2 }}
+          >
+            <button
+              type="button"
+              className="primary"
+              onClick={() => openNewPerson()}
+            >
               + Pessoa
             </button>
-            <button className="primary" onClick={openNewEvent}>
+
+            <button
+              type="button"
+              className="primary"
+              onClick={() => openNewEvent()}
+            >
               + Evento
             </button>
           </div>
@@ -748,12 +789,14 @@ export default function App() {
                       <div className="btns">
                         <span className="badge">{nomes.length} pessoa(s)</span>
                         <button
+                          type="button"
                           className="ghost"
                           onClick={() => openEditEvent(e.id)}
                         >
                           Editar
                         </button>
                         <button
+                          type="button"
                           className="danger"
                           onClick={() => deleteEvent(e.id)}
                         >
@@ -808,12 +851,14 @@ export default function App() {
 
                         <div className="btns">
                           <button
+                            type="button"
                             className="ghost"
                             onClick={() => openEditPerson(p.id)}
                           >
                             Editar
                           </button>
                           <button
+                            type="button"
                             className="danger"
                             onClick={() => deletePerson(p.id)}
                           >
@@ -898,10 +943,18 @@ export default function App() {
             </div>
 
             <div className="btns" style={{ marginTop: 14 }}>
-              <button className="ghost" onClick={openProVersion}>
-                Mais recursos na versão Pro
+              <button
+                type="button"
+                className="proBtnInline"
+                onClick={openProVersion}
+              >
+                ✨ Mais recursos na versão Pro
               </button>
-              <button className="danger" onClick={resetCase}>
+              <button
+                type="button"
+                className="danger"
+                onClick={resetCase}
+              >
                 Limpar caso atual
               </button>
             </div>
@@ -925,7 +978,11 @@ export default function App() {
               </div>
 
               <div className="btns" style={{ marginTop: 10 }}>
-                <button className="primary" onClick={exportJSON}>
+                <button
+                  type="button"
+                  className="primary"
+                  onClick={exportJSON}
+                >
                   Exportar JSON (backup)
                 </button>
 
@@ -944,8 +1001,12 @@ export default function App() {
                   </span>
                 </label>
 
-                <button className="ghost" onClick={openProVersion}>
-                  Mais recursos na versão Pro
+                <button
+                  type="button"
+                  className="proBtnInline"
+                  onClick={openProVersion}
+                >
+                  ✨ Mais recursos na versão Pro
                 </button>
               </div>
             </div>
@@ -965,6 +1026,7 @@ export default function App() {
               </div>
 
               <button
+                type="button"
                 className="ghost"
                 onClick={() => setShowPersonModal(false)}
               >
@@ -1032,8 +1094,8 @@ export default function App() {
                       return (
                         <button
                           key={r}
-                          className={on ? "tab active" : "tab"}
                           type="button"
+                          className={on ? "tab active" : "tab"}
                           onClick={() => {
                             setPersonDraft((s) => {
                               const set = new Set(s.papeis || []);
@@ -1095,6 +1157,7 @@ export default function App() {
 
             <div className="modalFooter">
               <button
+                type="button"
                 className="ghost"
                 onClick={() => setShowPersonModal(false)}
               >
@@ -1102,6 +1165,7 @@ export default function App() {
               </button>
 
               <button
+                type="button"
                 className="primary"
                 onClick={savePerson}
                 disabled={!personDraft.nome.trim()}
@@ -1125,6 +1189,7 @@ export default function App() {
               </div>
 
               <button
+                type="button"
                 className="ghost"
                 onClick={() => setShowEventModal(false)}
               >
@@ -1185,8 +1250,8 @@ export default function App() {
                     return (
                       <button
                         key={p.id}
-                        className={on ? "tab active" : "tab"}
                         type="button"
+                        className={on ? "tab active" : "tab"}
                         onClick={() => {
                           setEventDraft((s) => {
                             const set = new Set(s.pessoasIds || []);
@@ -1221,14 +1286,19 @@ export default function App() {
               </div>
 
               <div className="btns" style={{ marginTop: 12 }}>
-                <button className="ghost" type="button" onClick={openProVersion}>
-                  Mais recursos na versão Pro
+                <button
+                  type="button"
+                  className="proBtnInline"
+                  onClick={openProVersion}
+                >
+                  ✨ Mais recursos na versão Pro
                 </button>
               </div>
             </div>
 
             <div className="modalFooter">
               <button
+                type="button"
                 className="ghost"
                 onClick={() => setShowEventModal(false)}
               >
@@ -1236,6 +1306,7 @@ export default function App() {
               </button>
 
               <button
+                type="button"
                 className="primary"
                 onClick={saveEvent}
                 disabled={!eventDraft.titulo.trim()}
