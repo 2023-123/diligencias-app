@@ -5,11 +5,11 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-scripts": "5.0.1",
-    "idb-keyval": "^6.2.2",
-    "jspdf": "^2.5.1"
+    "idb-keyval": "6.2.2",
+    "jspdf": "2.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
